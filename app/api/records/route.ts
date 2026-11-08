@@ -3,7 +3,7 @@ import { getDb } from '../../../db';
 import { records } from '../../../db/schema';
 import { eq } from 'drizzle-orm';
 import { z } from 'zod';
-const schema=z.object({id:z.string().min(1).max(160),skill:z.enum(['reading','listening','writing','speaking']),status:z.enum(['draft','review','mastered']),text:z.string().max(30000),answers:z.array(z.string().max(200)).max(20),checks:z.array(z.boolean()).max(8),score:z.number().min(0).max(5).nullable(),total:z.number().min(0).max(5).nullable()});
+const schema=z.object({id:z.string().min(1).max(160),skill:z.enum(['reading','listening','writing','speaking']),status:z.enum(['draft','review','mastered']),text:z.string().max(30000),answers:z.array(z.string().max(200)).max(20),checks:z.array(z.boolean()).max(8),score:z.number().min(0).max(5).nullable(),studySeconds:z.number().int().min(0).max(315360000).optional(),total:z.number().min(0).max(5).nullable()});
 export async function GET() {
  const u=await getChatGPTUser(); if(!u) return Response.json({error:'请先登录'},{status:401});
  const rows=await getDb().select().from(records).where(eq(records.userId,u.userId));
