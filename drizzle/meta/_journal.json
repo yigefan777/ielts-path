@@ -8,6 +8,13 @@
       "when": 1793870262601,
       "tag": "0000_nebulous_kree",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1794237684869,
+      "tag": "0001_first_taskmaster",
+      "breakpoints": true
     }
   ]
 }
